@@ -1,0 +1,88 @@
+\documentclass[11pt]{scrreprt}
+\usepackage[left=25mm,right=25mm,top=25mm,bottom=25mm]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage[ngerman]{babel}
+\usepackage{float}
+\usepackage{graphicx}
+\usepackage{textcomp, gensymb}
+\usepackage{caption}
+\usepackage{xcolor}
+\usepackage{url}
+\usepackage{hyperref}
+\usepackage{varioref}
+\usepackage{mathtools}
+\usepackage{amssymb}
+\usepackage{siunitx}
+\usepackage[version=4]{mhchem}
+\usepackage{cleveref}
+\usepackage{pdfpages}
+\usepackage{tikz}
+% Schönere Tabellen
+\usepackage{booktabs}
+% Plotten, Tabellen und vieles mehr
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.16}
+
+
+\begin{document}
+
+% Verhindert die Seitennummerierung auf der Titelseite
+\pagenumbering{gobble}
+
+%--------Deckblatt Versuchsprotokoll----------%
+% Der input-Befehl lädt den LaTeX-Code aus der angegeben Datei und fügt ihn an dieser Stelle ein.
+% Hier müsst ihr dafür sorgen, dass die entsprechend nicht genutzte Version mit einem % auskommentiert ist
+\input{chapters/DeckblattP1P2}
+%\input{chapters/DeckblattP3P4}
+%---------------------------------------------%
+
+\newpage
+\pagenumbering{arabic} % Ab hier beginnt die Seitennummerierung
+\setcounter{page}{1}   % mit Seitenzahl 1. Dies stimmt mit der Seitennummerierung der Aufgabenblätter überein.
+
+%--------Aufgabenblatt----------%
+% kann so dem Inhaltsverzeichnis hinzugefügt werden
+%\addcontentsline{toc}{chapter}{Aufgabenblatt}
+
+% Im P3&P4 gibt es teilweise keine Aufgabenblatt mehr, sodass dieser Abschnitt auskommentiert werden kann.
+\includepdf[pages=-]{include/Aufgabenblatt.pdf} 
+% Die Datei Aufgabenblatt.pdf mit dem Inhalt "Test-Test-Test-Test" muss durch das aktuelle Aufgabenblatt des Versuchs ausgetauscht werden.
+%-------------------------------%
+
+%--------Inhaltsverzeichnis, Tabellen- und Abbildungsverzeichnis----------%
+\setcounter{chapter}{0} 
+% Bei "\setcounter{chapter}{-1}" erhält die Einführung die Kapitelnummer "0";
+% Dies kann praktisch sein, um die Kapitelnummer mit den Aufgabennummern der Versuche gleich zu halten.
+% Bei "\setcounter{chapter}{0}" startet das Inhaltsverzeichnis bei "1".
+\tableofcontents % Erstellt ein Inhaltsverzeichnis
+%\vspace{50px}   
+%\listoffigures  % Erstellt ein Abbildungsverzeichnis. Dies wird von manchen Tutor:innen gefordert.
+%\vspace{50px}   
+%\listoftables  % Erstellt ein Tabellenverzeichnis. Dies wird von manchen Tutor:innen gefordert.
+\pagebreak
+%-------------------------------------------------------------------------%
+
+%--------Inhalt der Kapitel----------%
+\input{chapters/Einführung}
+
+\input{chapters/01}
+
+\input{chapters/02}
+
+\input{chapters/03}
+
+\input{chapters/04}
+%------------------------------------%
+
+%--------Quellen----------%
+\input{chapters/Quellen}
+%-------------------------%
+
+%--------Anhang (Messprotokoll)----------%
+\newpage
+\addcontentsline{toc}{chapter}{Messprotokoll}
+\includepdf[pages=-]{include/Messprotokoll.pdf} 
+% Die Datei Messprotokoll.pdf mit dem Inhalt "Test-Test-Test-Test" muss durch das, während des Versuchs erstelltem Messprotokoll, ausgetauscht werden.
+%----------------------------------------%
+
+\end{document}
